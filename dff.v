@@ -5,10 +5,11 @@ module dff(
 );
 
 initial begin
-    Q <= 'b0;
+    Q <= 0;
 end
 
 always @(posedge clk)
     Q <= D;
-    assign NotQ = ~Q;
+
+assign NotQ = ~Q;
 endmodule

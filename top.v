@@ -15,8 +15,8 @@ jkff jkInst(
     .J(sw[1]),
     .K(sw[2]),
     .clk(btnC),
-    .JKQ(led[2]),
-    .JKNotQ(led[3])
+    .QInitial(led[2]),
+    .NotQ(led[3])
 );
 
 tff tInst(

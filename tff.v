@@ -6,11 +6,11 @@ module tff(
 );
 
 jkff jkffInst(
-    .J('b1),
-    .K('b1),
+    .J(T),
+    .K(T),
     .clk(clk),
-    .JKQ(Q),
-    .JKNotQ(NotQ)
+    .QInitial(Q),
+    .NotQ(NotQ)
 );
 
 endmodule

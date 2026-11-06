@@ -2,30 +2,15 @@ module jkff(
     input J,
     input K,
     input clk,
-    output reg JKQ,
-    output reg JKNotQ
+    output QInitial,
+    output NotQ
 );
 
-reg Q;
-reg NotQ;
-reg QInitial;
+assign Din = (~K & QInitial) | (J & NotQ);
 
-initial begin
-    Q <= 'b0;
-    QInitial <= 'b0;
-    NotQ <= 'b0;
-end
-
-always @(posedge clk) begin
-    Q <= QInitial;
-    NotQ <= ~Q;
-    JKQ <= Q;
-    JKNotQ <= NotQ;
-end
-
-d_latch dinst(
-    .D((~K && Q) + (J && NotQ)),
-    .E(clk),
+dff dinst(
+    .D(Din),
+    .clk(clk),
     .Q(QInitial),
     .NotQ(NotQ)
 );
